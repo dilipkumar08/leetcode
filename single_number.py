@@ -26,4 +26,23 @@ class Solution:
         return nums[i]
                     
             
-                
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        l=len(nums)
+        if l==1:
+            return nums[0]
+        else:
+            nums.sort()
+            for i in range(l):
+                if i==0:
+                    if nums[i]!=nums[i+1]:
+                        return nums[i]
+                        break
+                elif 0<i<l-1:
+                    if nums[i]!=nums[i+1] and nums[i]!=nums[i-1]:
+                        return nums[i]
+                        break
+        return nums[l-1]
+                    
+            
+                                
