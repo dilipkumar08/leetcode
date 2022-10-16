@@ -33,5 +33,3 @@ class Solution:
             return 1
         else:
             return res1*res2
-                
-                
