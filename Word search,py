@@ -1,0 +1,38 @@
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+
+        word_length=len(word)
+        outer_length=len(board)
+        inner_length=len(board[0])
+        track=set()
+
+        if outer_length==0 and word_length!=0:
+            return False
+        elif outer_length==0 and word_length==0:
+            return True
+        elif word_length>(outer_length*inner_length):
+            return False
+        def dfs(r,c,i):
+            if i==word_length:
+                return True
+            elif(r<0 or c<0 or 
+                r>=outer_length or 
+                c>=inner_length or
+                board[r][c]!=word[i]
+                or (r,c) in track):
+                return False
+            track.add((r,c))
+            res=(dfs(r+1,c,i+1) or
+                dfs(r,c+1,i+1) or
+                dfs(r-1,c,i+1) or
+                dfs(r,c-1,i+1))
+            track.remove((r,c))
+            return res
+
+        for i in range(outer_length):
+            for j in range(inner_length):
+                if board[i][j]==word[0]:
+                    if dfs(i,j,0):
+                        return(True)
+
+        return(False)
