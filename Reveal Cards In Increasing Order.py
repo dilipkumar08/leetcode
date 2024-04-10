@@ -1,11 +1,8 @@
 class Solution:
     def deckRevealedIncreasing(self, deck: List[int]) -> List[int]:
-
-
         deck.sort()
         l=len(deck)
         result=[1]*l
-
         sample=[j for j in range(l)]
         a=0
         for i in deck:
