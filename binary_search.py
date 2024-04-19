@@ -1,4 +1,4 @@
-class Solution:
+class BinarySearch:
     def search(self, nums: List[int], target: int) -> int:
         start=0
         end=len(nums)-1
